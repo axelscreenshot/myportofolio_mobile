@@ -18,17 +18,18 @@ Essay
 3. ... -->
 
 
-<!-- ## Week 12
-Topic
+## Week 12
+Flutter Navigation, Layouts, Forms, and Input Elements
 
-**-- Disclaimer --** \
-Essay
+**-- Tidak Menggunakan AI --**
+<!-- Essay -->
 
 
 ### Tugas 8
-1. ...
-2. ...
-3. ... -->
+1. `Navigator.push()` menambahkan suatu _route_ ke _stack route_ yang dikelola Navigator. Karena _route_ yang baru ditambahkan berada di atas _stack_, itulah yang akan ditampilkan ke pengguna. `Navigator.pushReplacement()` menge-_push_ dengan menghapus terlebih dahulu _route_ yang sedang ada di atas _stack_, dan `Navigator.pop()` hanya menghapus _route_ teratas pada _stack_, menyebabkan aplikasi berpindah ke _route_ yang di bawahnya (contoh: ketika menggunakan tombol 'back'). Khusus melalui kartu aksi, pembukaan formulir dilakukan dengan `Navigator.push()`. Pada drawer, opsi 'Home' melakukan routing kembali ke MyHomePage dengan `Navigator.pushReplacement()`.
+2. Scaffold menyediakan struktur visual dasar halaman dan memiliki atribut AppBar yang menampilkan bar bagian atas pada setiap halaman aplikasi. Informasi teks pada AppBar kemudian dapat diatur bergantung pada halaman apa yang sedang ditampilkan. Untuk memudahkan navigasi antar halaman dengan mudah, ditambahkan Drawer yang terikat langsung dengan Scaffold sehingga juga termasuk komponen tiap halaman, memastikan struktur konsisten. Contoh penggunaan warna tema portofolio yang universal ada pada `main.dart`, di mana _theme_ halaman-halaman diatur menggunakan warna `seedColor: Colors.indigo`, `secondary: Colors.amber[700]`.
+3. `Column` digunakan karena susunan _field_ secara vertikal sudah menjadi standar formulir pada umumnya, alur pengisian akan berjalan secara natural dari _field-field_ atas ke bawah. `CrossAxisAlignment.start` digunakan untuk me-rata-kiri-kan _fields_ mengikuti struktur teks pada umumnya (pada bahasa yang ditulis dari kiri ke kanan). Tata letak tersebut juga memiliki widget pengatur jarak dan widget penggulir pada `Padding` dan `SingleChildScrollView`: `Padding` memberi jarak antar elemen untuk kerapihan kebersihan dan `SingleChildScrollView` memberi kemampuan kepada pengguna untuk bisa _scroll_ apabila informasi pada halaman _overflow_.
+4. `final _formKey = GlobalKey<FormState>();` berarti `_formKey` adalah sebuah _key_ global yang menyimpan _state_ dari _form_ tersebut, yang berarti _key_ ini unik untuk keseluruhan aplikasi dan digunakan untuk _save_, _reset_, dan validasi setiap _field_ pada _form_ terkait. Validasi ini dilakukan ketika tombol Simpan ditekan, menggunakan `validate()` untuk mereturn True apabila kesesuaian _form_ sudah dipastikan terlebih dahulu oleh `validator`. Contoh: `validator` akan menghasilkan pesan error apabila nama proyek hanya diisi spasi atau kosong, tidak memperbolehkan _save state_ sebelum semua valid. Jika hasil inputan tidak divalidasi, masalah-masalah formatting dapat muncul di waktu yang akan datang, sehingga memilih jenis input atau papan ketik saja belum cukup.
 
 
 ## Week 11
