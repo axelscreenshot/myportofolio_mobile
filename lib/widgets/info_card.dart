@@ -6,7 +6,6 @@ import 'package:myportofolio_mobile/services/auth_state.dart';
 import 'package:myportofolio_mobile/widgets/auth_guard.dart';
 import 'package:provider/provider.dart';
 
-
 class ItemCard extends StatelessWidget {
   final ItemHomepage item;
 
@@ -27,18 +26,14 @@ class ItemCard extends StatelessWidget {
               // Gunakan Navigator.push() untuk melakukan navigasi ke MaterialPageRoute yang mencakup ProjectFormPage
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => ProjectFormPage(),
-                ),
+                MaterialPageRoute(builder: (context) => ProjectFormPage()),
               );
             }
           } else if (item.name == "Tambah Pengalaman") {
             // Gunakan Navigator.push() untuk melakukan navigasi ke MaterialPageRoute yang mencakup ExperienceFormPage
             Navigator.push(
               context,
-              MaterialPageRoute(
-                builder: (context) => ExperienceFormPage(),
-              ),
+              MaterialPageRoute(builder: (context) => ExperienceFormPage()),
             );
           } else if (item.name == 'Logout') {
             final authState = context.read<AuthState>();
@@ -57,9 +52,7 @@ class ItemCard extends StatelessWidget {
               ScaffoldMessenger.of(context)
                 ..hideCurrentSnackBar()
                 ..showSnackBar(
-                  const SnackBar(
-                    content: Text('Anda belum login.'),
-                  ),
+                  const SnackBar(content: Text('Anda belum login.')),
                 );
             }
           } else {
@@ -79,11 +72,7 @@ class ItemCard extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Icon(
-                  item.icon,
-                  color: Colors.white,
-                  size: 30.0,
-                ),
+                Icon(item.icon, color: Colors.white, size: 30.0),
                 const Padding(padding: EdgeInsets.all(3)),
                 Text(
                   item.name,

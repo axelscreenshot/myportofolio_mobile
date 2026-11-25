@@ -4,7 +4,6 @@ import 'package:myportofolio_mobile/services/api_client.dart';
 import 'package:myportofolio_mobile/services/auth_state.dart';
 import 'package:provider/provider.dart';
 
-
 void main() {
   runApp(MyApp(apiClient: ApiClient()));
 }

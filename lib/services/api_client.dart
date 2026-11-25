@@ -75,10 +75,7 @@ class ApiClient {
   Future<void> logout({required String token}) async {
     final response = await _client.post(
       _uri('/api/v1/auth/logout/'),
-      headers: {
-        'Accept': 'application/json',
-        'Authorization': 'Token $token',
-      },
+      headers: {'Accept': 'application/json', 'Authorization': 'Token $token'},
     );
     _ensureSuccess(response);
   }
@@ -87,6 +84,6 @@ class ApiClient {
     if (response.statusCode >= 200 && response.statusCode < 300) {
       return;
     }
-    throw ApiException(response.statusCode, response.body);
+    throw ApiException(response.statusCode, 'ERROR');
   }
 }

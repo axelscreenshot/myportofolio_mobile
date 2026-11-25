@@ -76,9 +76,7 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
                 physics: const AlwaysScrollableScrollPhysics(),
                 child: SizedBox(
                   height: MediaQuery.of(context).size.height * 0.67,
-                  child: const Center(
-                    child: Text('No projects found.'),
-                  ),
+                  child: const Center(child: Text('No projects found.')),
                 ),
               ),
             );
@@ -97,7 +95,7 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
               itemBuilder: (context, index) {
                 final project = projects[index];
                 final hasThumbnail = project.thumbnail.trim().isNotEmpty;
-                
+
                 return Card(
                   margin: const EdgeInsets.only(bottom: 12),
                   clipBehavior: Clip.antiAlias,
@@ -106,32 +104,31 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
 
                     // === Thumbnail? ===
                     leading: hasThumbnail
-                      ? ClipRRect(
-                          borderRadius: BorderRadius.circular(8),
-                          child: Image.network(
-                            project.thumbnail,
-                            width: 56,
-                            height: 56,
-                            fit: BoxFit.cover,
-                            errorBuilder: (_, __, ___) => const SizedBox(
+                        ? ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.network(
+                              project.thumbnail,
                               width: 56,
                               height: 56,
-                              child: Icon(Icons.broken_image_outlined),
+                              fit: BoxFit.cover,
+                              errorBuilder: (_, _, _) => const SizedBox(
+                                width: 56,
+                                height: 56,
+                                child: Icon(Icons.broken_image_outlined),
+                              ),
                             ),
+                          )
+                        : const SizedBox(
+                            width: 56,
+                            height: 56,
+                            child: Icon(Icons.folder_open),
                           ),
-                        )
-                      : const SizedBox(
-                          width: 56,
-                          height: 56,
-                          child: Icon(Icons.folder_open),
-                        ),
 
                     // === Title ===
                     title: Text(
                       project.title,
-                      style: Theme.of(context).textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                          ),
+                      style: Theme.of(context).textTheme.titleMedium
+                          ?.copyWith(fontWeight: FontWeight.bold),
                     ),
 
                     // === Description ===

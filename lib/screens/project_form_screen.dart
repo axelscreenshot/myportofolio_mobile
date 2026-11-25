@@ -6,7 +6,6 @@ import 'package:myportofolio_mobile/widgets/auth_guard.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
 import 'package:provider/provider.dart';
 
-
 class ProjectFormPage extends StatefulWidget {
   const ProjectFormPage({super.key});
 
@@ -70,7 +69,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
         final loggedIn = await ensureLoggedIn(context);
         if (!loggedIn || !mounted) return;
       }
-      
+
       final activeToken = context.read<AuthState>().token;
       if (activeToken == null || activeToken.isEmpty) {
         return;
@@ -168,9 +167,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
       if (!mounted) return;
       ScaffoldMessenger.of(context)
         ..hideCurrentSnackBar()
-        ..showSnackBar(
-          SnackBar(content: Text('Terjadi kesalahan: $e')),
-        );
+        ..showSnackBar(SnackBar(content: Text('Terjadi kesalahan: $e')));
     } finally {
       if (mounted) {
         setState(() {
@@ -184,11 +181,7 @@ class _ProjectFormPageState extends State<ProjectFormPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Center(
-          child: Text(
-            'Add Project Form',
-          ),
-        ),
+        title: const Center(child: Text('Add Project Form')),
         backgroundColor: Colors.indigo,
         foregroundColor: Colors.white,
       ),

@@ -14,7 +14,8 @@ class Project {
     this.source = '',
   });
 
-  factory Project.fromJson(Map<String, dynamic> json) => _$ProjectFromJson(json);
+  factory Project.fromJson(Map<String, dynamic> json) =>
+      _$ProjectFromJson(json);
 
   @JsonKey(includeToJson: false)
   final String? id;
