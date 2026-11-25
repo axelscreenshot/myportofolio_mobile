@@ -1,5 +1,6 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:myportofolio_mobile/screens/home_page_screen.dart';
+import 'package:myportofolio_mobile/screens/project_list_screen.dart';
 import 'package:myportofolio_mobile/screens/project_form_screen.dart';
 import 'package:myportofolio_mobile/screens/experience_form_screen.dart';
 import 'package:myportofolio_mobile/services/auth_state.dart';
@@ -20,7 +21,14 @@ class ItemCard extends StatelessWidget {
       child: InkWell(
         // Aksi ketika kartu ditekan oleh pengguna.
         onTap: () async {
-          if (item.name == "Tambah Proyek") {
+          if (item.name == 'Lihat Proyek') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ProjectListScreen(),
+              ),
+            );
+          } else if (item.name == "Tambah Proyek") {
             final loggedIn = await ensureLoggedIn(context);
             if (loggedIn && context.mounted) {
               // Gunakan Navigator.push() untuk melakukan navigasi ke MaterialPageRoute yang mencakup ProjectFormPage
