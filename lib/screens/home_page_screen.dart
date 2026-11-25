@@ -1,10 +1,10 @@
 import 'package:material_ui/material_ui.dart';
 import 'package:myportofolio_mobile/widgets/left_drawer.dart';
-import 'package:myportofolio_mobile/widgets/item_card.dart';
+import 'package:myportofolio_mobile/widgets/info_card.dart';
 
 
-class MyHomePage extends StatelessWidget {
-  MyHomePage({super.key});
+class MyHomePageScreen extends StatelessWidget {
+  MyHomePageScreen({super.key});
 
   final String npm = "2506590063";
   final String nama = "Axel Sebastian Saragih";
@@ -25,7 +25,7 @@ class MyHomePage extends StatelessWidget {
       // AppBar menampilkan bar bagian atas halaman aplikasi.
       appBar: AppBar(
         title: const Text(
-          'MyPortfolio',
+          'MyPortofolio',
           style: TextStyle(
             color: Colors.white,
             fontWeight: FontWeight.bold,
@@ -61,7 +61,7 @@ class MyHomePage extends StatelessWidget {
                     const Padding(
                       padding: EdgeInsets.only(top: 16.0),
                       child: Text(
-                        'Selamat datang di MyPortfolio Mobile!',
+                        'Selamat datang di MyPortofolio Mobile!',
                         style: TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 18.0,

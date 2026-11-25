@@ -5,14 +5,14 @@ Kelas : PBP B
 # <div align="center">My Portofolio: Mobile — Progress</div>
 
 
-<!-- ## Week X
-Topic
+<!-- ## Week 13
+Flutter Backend Integration, Authentication, and CI/CD
 
 **-- Disclaimer --** \
 Essay
 
 
-### Tugas X
+### Tugas 9
 1. ...
 2. ...
 3. ... -->
@@ -41,7 +41,7 @@ Basic Flutter
 
 ### Tugas 7
 1. Pada Flutter, semua komponen UI adalah sebuah _widget_. Oleh karena itu, seluruh tampilan aplikasi sebenarnya hanyalah suatu _widget tree_ yang besar. Hubungan induk-anak antar-_widget_ mengikuti pewarisan mirip seperti umumnya, di mana properti dan atribut _parent_ akan diwariskan ke _child_.
-2. MyPortfolio Mobile menggunakan widget sebagai berikut:
+2. MyPortofolio Mobile menggunakan widget sebagai berikut:
     - MaterialApp: _root_, mengatur tema, judul, dan halaman utama.
     - Scaffold: membangun struktur dasar halaman.
     - AppBar: menampilkan judul halaman di bagian atas.
