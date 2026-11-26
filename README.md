@@ -3,19 +3,45 @@ NPM   : 2506590063 \
 Kelas : PBP B
 
 # <div align="center">My Portofolio: Mobile — Progress</div>
+[![CI](https://github.com/axelscreenshot/myportofolio_mobile/actions/workflows/main.yaml/badge.svg)](https://github.com/axelscreenshot/myportofolio_mobile/actions/workflows/main.yaml)
 
 
-<!-- ## Week 13
+## Setup
+
+Pastikan Flutter SDK yang mendukung versi Dart pada `pubspec.yaml` sudah terpasang dan backend [DRF](https://axel-sebastian-myportofolio.pws.cs.ui.ac.id) sedang berjalan.
+
+1. Ambil dependensi
+   ```sh
+   flutter pub get
+   ```
+2. Buat berkas serialisasi
+   ```sh
+   dart run build_runner build --delete-conflicting-outputs
+   ```
+3. Jalankan aplikasi dengan URL backend melalui `API_BASE_URL`:
+   ```sh
+   flutter run --dart-define=API_BASE_URL=https://axel-sebastian-myportofolio.pws.cs.ui.ac.id
+   ```
+4. Untuk membuat APK release
+   ```sh
+   flutter build apk --dart-define=API_BASE_URL=https://axel-sebastian-myportofolio.pws.cs.ui.ac.id
+   ```
+
+
+## Week 13
 Flutter Backend Integration, Authentication, and CI/CD
 
-**-- Disclaimer --** \
-Essay
+**-- Menggunakan AI --** \
+Karena banyak materi yang baru saja dipertemukan di tutorial ini dan banyak yang harus dilengkapi, saya akhirnya perlu melempar kode dan bertanya kepada Gemini. Walau tidak semuanya saya ambil dan taruh ke kode saya, setidaknya pemahaman bertambah sedikit dan gambaran besarnya dapat diterima dengan cukup untuk pengimplementasian pada tugas kali ini: [Menghubungkan Autentikasi ke UI Flutter](https://share.gemini.google/dWd3MLzz6CTj), [Implementasi Layar Daftar dan Detail Proyek Flutter](https://share.gemini.google/M6j8ArbQSJxO).
 
 
 ### Tugas 9
-1. ...
-2. ...
-3. ... -->
+1. `@JsonSerializable(fieldRename: FieldRename.snake)` digunakan agar bisa secara otomatis memetakan _field_ camelCase pada Dart ke kunci JSON yang berupa snake_case pada DRF, sementara `@JsonKey(includeToJson: false)` digunakan untuk mengecualikan id saat melakukan serialisasi _body_ permintaan POST, membiarkan Django yang menghasilkan UUID. Mengirim Map<String, dynamic> mentah rentan terhadap kesalahan pengetikan dan kebocoran data. Contoh: dengan `@JsonKey(includeToJson: false)`, pembuatan id _project_ bisa diserahkan menggunakan UUID Django daripada membuat dari awal kembali yang bisa berbeda penerapannya dengan id-id _project_ lain yang sudah ada.
+2. Inisialisasi Future tidak di dalam `build()` agar Flutter tidak mengirim ulang permintaan HTTP setiap kali _widget_ dibangun ulang. ApiClient sebaiknya melempar ApiException agar kegagalan yang dilempar tersebut dapat digunakan oleh builder di dalam _widget_ untuk merender _widget_ yang bergantung pada _widget_ pesan kesalahan ketika terjadi error pemanggilan API.
+3. `myportfolio_mobile` menggunakan TokenAuthentication karena aplikasi _mobile_ bersifat _stateless_ (tanpa _session cookie_), sementara SessionAuthentication tetap diaktifkan agar Django Admin dan API DRF tetap bisa digunakan berbarengan.
+4. Job `build` menyiapkan Flutter _stable_, mengambil dependensi, lalu menjalankan `setup` yang membuat berkas hasil _code generation_. Setelah itu, workflow memeriksa format Dart pada `lib` dan `test`, menjalankan `flutter analyze`, serta menjalankan tes dengan laporan _coverage_. \
+Job `build_apk` berjalan hanya jika `build` berhasil. Karena job ini berjalan terpisah, _checkout_ kode dilakukan kembali dan dependensi diambil lagi, kemudian membuat ulang berkas hasil _code generation_. Berikutnya ia membangun APK _release_ dengan `API_BASE_URL` sebagai `--dart-define`, lalu mengunggah APK sebagai _artifact_ bernama `app-release-apk`. \
+Berkas `*.g.dart` dikecualikan dari perhitungan _coverage_ dan ada di `.gitignore` karena merupakan keluaran _generator_, bukan sumber yang perlu diedit langsung. Dengan hanya menyimpan sumber model dan anotasinya, maka perubahan hasil _generate_ yang berulang atau tidak sinkron di Git bisa terhindarkan. CI akan tetap dapat memakai berkas tersebut karena kedua job menjalankan `build_runner` sebelum menganalisis, mengetes, atau membangun aplikasi.
 
 
 ## Week 12

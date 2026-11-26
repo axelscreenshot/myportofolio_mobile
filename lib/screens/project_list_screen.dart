@@ -84,7 +84,7 @@ class _ProjectListScreenState extends State<ProjectListScreen> {
 
           // Return a RefreshIndicator (onRefresh: _reload) wrapping a
           // ListView.builder that renders a Card/ListTile for each project
-          // (showing project.title, project.techStack, and project.description)
+          // (showing project.title, etc.)
           // and navigates to ProjectDetailScreen(project: project) on tap.
           return RefreshIndicator(
             onRefresh: _reload,

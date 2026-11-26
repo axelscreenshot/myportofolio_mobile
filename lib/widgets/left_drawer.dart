@@ -68,6 +68,23 @@ class LeftDrawer extends StatelessWidget {
               }
             },
           ),
+          ListTile(
+            leading: const Icon(Icons.add_circle_outline),
+            title: const Text('Add Experience'),
+            // Navigasi ke halaman tambah pengalaman
+            onTap: () async {
+              Navigator.pop(context);
+              final loggedIn = await ensureLoggedIn(context);
+
+              if (loggedIn && context.mounted) {
+                // Routing ke halaman ExperienceFormPage
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => ExperienceFormPage()),
+                );
+              }
+            },
+          ),
           const Divider(),
           if (!isLoggedIn)
             ListTile(
@@ -82,18 +99,6 @@ class LeftDrawer extends StatelessWidget {
               },
             )
           else ...[
-            ListTile(
-              leading: const Icon(Icons.add_circle_outline),
-              title: const Text('Add Experience'),
-              onTap: () {
-                Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => const ExperienceFormPage(),
-                  ),
-                );
-              },
-            ),
             ListTile(
               leading: const Icon(Icons.logout),
               title: const Text('Logout'),

@@ -2,6 +2,7 @@ import 'package:material_ui/material_ui.dart';
 import 'package:myportofolio_mobile/screens/home_page_screen.dart';
 import 'package:myportofolio_mobile/screens/project_list_screen.dart';
 import 'package:myportofolio_mobile/screens/project_form_screen.dart';
+import 'package:myportofolio_mobile/screens/experience_list_screen.dart';
 import 'package:myportofolio_mobile/screens/experience_form_screen.dart';
 import 'package:myportofolio_mobile/services/auth_state.dart';
 import 'package:myportofolio_mobile/widgets/auth_guard.dart';
@@ -28,6 +29,13 @@ class ItemCard extends StatelessWidget {
                 builder: (context) => const ProjectListScreen(),
               ),
             );
+          } else if (item.name == 'Lihat Pengalaman') {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const ExperienceListScreen(),
+              ),
+            );
           } else if (item.name == "Tambah Proyek") {
             final loggedIn = await ensureLoggedIn(context);
             if (loggedIn && context.mounted) {
@@ -38,11 +46,14 @@ class ItemCard extends StatelessWidget {
               );
             }
           } else if (item.name == "Tambah Pengalaman") {
-            // Gunakan Navigator.push() untuk melakukan navigasi ke MaterialPageRoute yang mencakup ExperienceFormPage
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => ExperienceFormPage()),
-            );
+            final loggedIn = await ensureLoggedIn(context);
+            if (loggedIn && context.mounted) {
+              // Gunakan Navigator.push() untuk melakukan navigasi ke MaterialPageRoute yang mencakup ExperienceFormPage
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ExperienceFormPage()),
+              );
+            }
           } else if (item.name == 'Logout') {
             final authState = context.read<AuthState>();
             if (authState.isLoggedIn) {
